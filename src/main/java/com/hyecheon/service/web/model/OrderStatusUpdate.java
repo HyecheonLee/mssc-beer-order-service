@@ -1,0 +1,32 @@
+package com.hyecheon.service.web.model;
+
+import java.time.OffsetDateTime;
+import java.util.UUID;
+import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
+/**
+ * @author hyecheon
+ * @date 2020-01-29
+ */
+@Data
+@NoArgsConstructor
+@EqualsAndHashCode(callSuper = true)
+public class OrderStatusUpdate extends BaseItem {
+
+  @Builder
+  public OrderStatusUpdate(UUID id, Integer version, OffsetDateTime createdDate,
+      OffsetDateTime lastModifiedDate,
+      UUID orderId, String orderStatus, String customerRef) {
+    super(id, version, createdDate, lastModifiedDate);
+    this.orderId = orderId;
+    this.orderStatus = orderStatus;
+    this.customerRef = customerRef;
+  }
+
+  private UUID orderId;
+  private String customerRef;
+  private String orderStatus;
+}
