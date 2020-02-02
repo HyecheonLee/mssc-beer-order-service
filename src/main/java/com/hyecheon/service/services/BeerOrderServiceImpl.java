@@ -8,7 +8,6 @@ import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 /**
  * @author hyecheon
@@ -21,7 +20,6 @@ public class BeerOrderServiceImpl implements BeerOrderService {
 
   public final String BEER_PATH_V1 = "/api/v1/beer/";
   public final String BEER_UPC_PATH = "/api/v1/beerUpc/";
-  private final RestTemplate restTemplate;
   @Setter
   private String beerServiceHost;
 

@@ -3,9 +3,9 @@ package com.hyecheon.service.services.beer;
 import com.hyecheon.service.web.model.BeerDto;
 import java.util.Optional;
 import java.util.UUID;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -13,7 +13,6 @@ import org.springframework.web.client.RestTemplate;
  * @author hyecheon
  * @date 2020-01-31
  */
-@RequiredArgsConstructor
 @ConfigurationProperties(prefix = "sfg.brewery", ignoreUnknownFields = false)
 @Service
 public class BeerServiceImpl implements BeerService {
@@ -23,6 +22,10 @@ public class BeerServiceImpl implements BeerService {
   private final RestTemplate restTemplate;
   @Setter
   private String beerServiceHost;
+
+  public BeerServiceImpl(RestTemplateBuilder restTemplate) {
+    this.restTemplate = restTemplate.build();
+  }
 
   @Override
   public Optional<BeerDto> getBeerById(UUID uuid) {
